@@ -30,27 +30,26 @@ def get_all_images(image_path, watermark, output_path):
 def presentation(images_path):
     prs = Presentation()
 
-    lyt = prs.slide_layouts[1]  # choosing a slide layout
+    lyt = prs.slide_layouts[1] 
 
     # images from the path
     imagesList = listdir(images_path)
 
     for image in imagesList:
-        slide = prs.slides.add_slide(lyt)  # adding a slide
+        slide = prs.slides.add_slide(lyt)  
         prs.slide_width = Inches(56)
         prs.slide_height = Inches(56)
-        title = slide.shapes.title  # assigning a title
-        subtitle = slide.placeholders[1]  # placeholder for subtitle
+        title = slide.shapes.title  
+        subtitle = slide.placeholders[1]  
         name = image.replace(".jpg.png", "")
-        title.text = f"{name}"  # title
-        subtitle.text = f"{name}"  # subtitle
+        title.text = f"{name}"  
+        subtitle.text = f"{name}" 
 
         img = (images_path + image)
 
         slide.shapes.add_picture(img, left=Inches(1), top=Inches(2.5))
 
-    prs.save(f'{images_path}\output.pptx')  # saving file
-
+    prs.save(f'{images_path}\output.pptx')  
 
 get_all_images(image_destination, watermark_file, path)
 presentation(path)
